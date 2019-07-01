@@ -88,8 +88,6 @@ export default {
 #head {
   height: 0.4rem;
   line-height: 0.4rem;
-
-  border: 1px solid black;
   background-color: rgb(0, 102, 255);
   position: relative;
 }

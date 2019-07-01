@@ -1,27 +1,26 @@
 <template>
   <div id="my">
     <div id="button">
-      <router-link  @click="one()" id="waimai" :to="{name:'waimai'}" >
-					<img v-if="t==true" src="../../../static/imgs/homeT.png"/>
-                    <img v-if="t==false" src="../../../static/imgs/homeF.png" alt="">
-					<span>外卖</span>
-                    </router-link>
-                     <router-link   @click="two()" id="sousuo" :to="{name:'sosuo'}">
-                    <img  v-if="tr == true" src="../../../static/imgs/zhinanzhen1.png" alt="">
-                    <img v-if="tr==false" src="../../../static/imgs/zhinanzhen.png"/>
-					<span>搜索</span>
-                     </router-link>
-                      <router-link   @click="three()" id="dingdan" :to="{name:'ddlb'}">
-					<img v-if="tru==true" src="../../../static/imgs/icon-1.png"/>
-                    <img v-if="tru==false" src="../../../static/imgs/icon-.png">
-      <span>订单</span>
-      <!-- </div> -->
-      </router-link>
-                     <router-link   @click="four()" id="wode" :to="{name:'myxiangqing'}">
-					<img v-if="true==true" src="../../../static/imgs/touxiang2.png"/>
-                    <img v-if="true==false" src="../../../static/imgs/touxiang1.png" alt="">
-					<span>我的</span>
-      </router-link>
+      <div @click="one()" id="waimai">
+        <img v-if="t==true" src="../../../static/imgs/homeT.png" />
+        <img v-if="t==false" src="../../../static/imgs/homeF.png" alt />
+        <span>外卖</span>
+      </div>
+      <div @click="two()" id="sousuo">
+        <img v-if="tr == true" src="../../../static/imgs/zhinanzhen1.png" alt />
+        <img v-if="tr==false" src="../../../static/imgs/zhinanzhen.png" />
+        <span>搜索</span>
+      </div>
+      <div @click="three()" id="dingdan">
+        <img v-if="tru==true" src="../../../static/imgs/icon-1.png" />
+        <img v-if="tru==false" src="../../../static/imgs/icon-.png" />
+        <span>订单</span>
+      </div>
+      <div @click="four()" id="wode">
+        <img v-if="trua==false" src="../../../static/imgs/touxiang2.png" />
+        <img v-if="trua==true" src="../../../static/imgs/touxiang1.png" alt />
+        <span>我的</span>
+      </div>
       <!-- <div @click="one()" class="one">
         <img v-if="t==false" src="../../../static/imgs/waimai.png" alt />
         <img v-if="t==true" src="../../../static/imgs/waimai1.png" alt />
@@ -41,7 +40,7 @@
         <img v-if="true==false" src="../../../static/imgs/wode.png" alt />
         <img v-if="true==true" src="../../../static/imgs/wode1.png" alt />
         <p>我的</p>
-      </div> -->
+      </div>-->
     </div>
     <router-view></router-view>
   </div>
@@ -54,7 +53,7 @@ export default {
       t: false,
       tr: false,
       tru: false,
-      true: true
+      trua: true
     };
   },
   methods: {
@@ -62,29 +61,29 @@ export default {
       this.t = true;
       this.tr = false;
       this.tru = false;
-	  this.true = false;
-	//   this.$router.push({name:"waimai"});
+      this.trua = false;
+        this.$router.push({name:"waimai"});
     },
     two() {
       this.t = false;
       this.tr = true;
       this.tru = false;
-	  this.true = false;
-	//   this.$router.push({name:"sosuo"});
+      this.trua = false;
+        this.$router.push({name:"sosuo"});
     },
     three() {
       this.t = false;
       this.tr = false;
       this.tru = true;
-	  this.true = false;
-	//   this.$router.push({name:"ddlb"});
+      this.trua = false;
+        this.$router.push({name:"ddlb"});
     },
     four() {
       this.t = false;
       this.tr = false;
       this.tru = false;
-	  this.true = true;
-	//   this.$router.push({name:"myxiangqing"});
+      this.trua = true;
+        this.$router.push({name:"myxiangqing"});
     }
   }
 };

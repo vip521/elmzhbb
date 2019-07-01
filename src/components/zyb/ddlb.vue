@@ -10,7 +10,7 @@
         <div class="center_right">
           <div class="right_one">
             <div class="r_one_one">
-              <div class="o_one_one">
+              <div @click="qaq(v)" class="o_one_one">
                 <p class="name">{{v.dianpu.name}}</p>
                 <img class="right" src="../../../static/imgs/right.png" alt>
               </div>
@@ -40,6 +40,10 @@ export default {
     return {};
   },
   methods: {
+    qaq(v){
+      this.$store.commit("setddxq",v);
+      this.$router.push({name:"dingdan"});
+    },
     add() {
       this.$router.back();
     },

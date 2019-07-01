@@ -89,7 +89,7 @@
     <!-- 中间部分 -->
     <div class="zhongjian">
       <ul v-if="shangpus.length > 0" id="bottom">
-        <li @click="shangpu_li()" class="sp" :key="i" v-for="(v,i) in shangpus">
+        <li @click="shangpu_li(v)" class="sp" :key="i" v-for="(v,i) in shangpus">
           <img class="sp_left" :src="'https://elm.cangdu.org/img/'+v.image_path" alt>
           <div class="sp_right">
             <div class="r_one">
@@ -203,8 +203,9 @@ export default {
   },
   methods: {
     //商铺li添加点击事件
-    shangpu_li(){
-      alert("跳转")
+    shangpu_li(v){
+      this.$store.commit("dianpuadd",v);
+      this.$router.push({name:"dianpu"});
     },
     getintil() {
       const api = "https://elm.cangdu.org/shopping/v2/restaurant/category";

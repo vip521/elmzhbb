@@ -17,5 +17,11 @@ export default {
     map:"",//搜索到的地址
     shdz:[],//收货位置数组
     spfl:{},//轮播图二级页面获取此数据
-    ddliebiao:[],//订单列表数组
+    ddliebiao:[],//订单列表数组,
+    ddxq:{},//订单详情
+    username:"",//账号
+    password:"",//密码
+    img:"",//头像
+    nameid:"",//用户名
+
 }

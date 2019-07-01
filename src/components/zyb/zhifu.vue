@@ -120,7 +120,7 @@ export default {
       var obj = {
         dianpu:this.dianpu,
         caipin:this.gouwuche,
-        shenfen:this.getshdz,
+        shenfen:this.getshdz[0],
         canhe:this.a,
         money:c,
         shijian:{

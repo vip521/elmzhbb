@@ -1,20 +1,29 @@
 <template>
   <div>
     <div id="head">
-      <img @click="go()" class="img" src="../../static/imgs/left.png" alt>
+      <img @click="go()" class="img" src="../../static/imgs/left.png" alt />
       <span class="loginPW">密码登录</span>
     </div>
-    <br>
+    <br />
     <div>
-      <input class="user" v-model="username" placeholder="账号" type="text">
-      <br>
-      <input class="pasw" v-model="password" placeholder="密码" type="text">
-      <br>
-
+      <input class="user" v-model="username" placeholder="账号" type="text" />
+      <br />
+      <div class="kaiguan">
+        <input class="pasw" v-model="password" placeholder="密码" :type="value" />
+        <el-tooltip :content="'Switch value: ' + value" placement="top">
+          <el-switch
+            v-model="value"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            active-value="text"
+            inactive-value="password"
+          ></el-switch>
+        </el-tooltip>
+      </div>
       <!-- 第三个输入框 -->
       <div class="Yzm">
-        <input class="code" v-model="codeNumber" placeholder="验证码" type="text">
-        <img class="img_p" :src="code&&code" alt>
+        <input class="code" v-model="codeNumber" placeholder="验证码" type="text" />
+        <img class="img_p" :src="code&&code" alt />
         <div class="changYzm">
           <p>看不清</p>
           <button class="img_b" @click="getcode()">换一张</button>
@@ -25,11 +34,11 @@
         <p>温馨提示：未注册过的账号，登录时将自动注册</p>
         <p>注册过的用户凭账号密码登录</p>
       </div>
-      <br>
+      <br />
       <button class="loginBtn" @click="login()">登录</button>
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
       <p @click="add()" class="NewSZ">重置密码?</p>
     </div>
   </div>
@@ -42,7 +51,8 @@ export default {
       code: "", //存储验证码,64位图片
       username: "",
       password: "",
-      codeNumber: "" //输入框的值-验证码
+      codeNumber: "", //输入框的值-验证码
+       value: 'password',
     };
   },
   created() {
@@ -76,6 +86,11 @@ export default {
         if (res.data.message) {
           alert(res.data.message);
         } else {
+          var obj = {
+            a:this.username,
+            b:this.password
+          };
+          this.$store.commit("setzhmm",obj);
           this.abc();
           this.$router.back();
         }
@@ -90,7 +105,7 @@ export default {
         name: "czmm"
       });
     },
-    abc(){
+    abc() {
       this.$store.commit("dengluadd");
     }
   }
@@ -100,8 +115,6 @@ export default {
 #head {
   height: 0.4rem;
   line-height: 0.4rem;
-
-  border: 1px solid black;
   background-color: rgb(0, 102, 255);
   position: relative;
 }
@@ -111,7 +124,6 @@ export default {
   color: white;
 }
 .loginPW {
-  /* border: 1px solid black; */
   height: 0.1.5rem;
   line-height: 0.1.5rem;
   font-size: 0.2rem;
@@ -120,6 +132,12 @@ export default {
   position: absolute;
   right: 40%;
   transform: transform(-40%);
+}
+.kaiguan{
+  display: flex;
+  flex-wrap: nowrap; 
+  align-items: center;
+  background-color: #fff;
 }
 .user,
 .pasw,
@@ -148,7 +166,6 @@ export default {
 }
 /* 换一张：按钮 */
 .img_b {
-  border: 1px solid black;
   margin-left: 0.3rem;
   background-color: #fff;
   color: blue;

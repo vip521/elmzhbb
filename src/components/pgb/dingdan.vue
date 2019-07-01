@@ -3,52 +3,52 @@
           <div class="head">
             <div class="top">
               <img @click="go()" class="imgleft" src="../../../static/imgs/left.png" alt="">
-              <span class="dingdan">订单列表</span>
+              <span  class="dingdan">订单列表</span>
           </div>
           </div>
          <!-- //头像+再来一单 -->
           <div class="center">
-          <img class="center_img" src="../../../static/imgs/07.jpg" alt="">
+          <img class="center_img" :src="'https://elm.cangdu.org/img/'+getddxq.dianpu.image_path" alt="">
           <h1 class="center_p1">支付超时</h1>
-          <p class="center_p2">再来一单</p>
+          <p @click="again()" class="center_p2">再来一单</p>
           </div>
           <!-- 演示效果 -->
           <ul class="ul">
             <li class="li1">
               <div class="li_div">
-              <img class="li_imgleft"  src="../../../static/imgs/07.jpg" alt="">
-              <h2>演示效果</h2>
+              <img class="li_imgleft"  :src="'https://elm.cangdu.org/img/'+getddxq.dianpu.image_path" alt="">
+              <h2>{{getddxq.dianpu.name}}</h2>
               </div>
               <img class="li_imgright" src="../../../static/imgs/right.png" alt="">
             </li>
-             <li class="li2">
-               <span class="li2_span">美美的味道</span>
+             <li :key="i" v-for="(v,i) in getddxq.caipin" class="li2">
+               <span class="li2_span">{{v.name}}</span>
                <div class="li2_div">
-                 <span>X1</span>
-                 <span>￥20</span>
+                 <span>X{{v.original_price}}</span>
+                 <span>￥{{v.price}}</span>
                </div>
                 </li>
               <li class="li3">
                 <span>配送费</span>
-                <span>4</span>
+                <span>{{getddxq.dianpu.float_delivery_fee}}</span>
                  </li>
                <li class="li4">
-                 <span>实付10000.00</span>
+                 <span>实付{{getddxq.money+getddxq.canhe+getddxq.dianpu.float_delivery_fee}}</span>
                </li>
           </ul>
           <ul class="ul2">
           <h2>配送信息</h2>
-          <li>送达时间:尽快送达</li>
-          <li>送货地址:张卡士
-            <span>321321321</span>
+          <li>送达时间:{{getddxq.dianpu.order_lead_time}}</li>
+          <li>送货地址:{{getddxq.shenfen.name}}
+            <span>{{getddxq.shenfen.phone}}</span>
           </li>
-          <li>配送方式:蜂鸟传送</li>
+          <li>配送方式:{{getddxq.dianpu.delivery_mode.text}}</li>
           </ul>
           <ul class="ul3">
            <h2>订单信息</h2>
            <li>订单号:10449</li>
            <li>支付方式:在线支付</li>
-           <li>下单时间:2019 06-25 11:40</li>
+           <li>下单时间:{{getddxq.shijian.nian}}-{{getddxq.shijian.yue}}-{{getddxq.shijian.ri}}  {{getddxq.shijian.shi}}:{{getddxq.shijian.fen}}</li>
           </ul>
     </div>
 </template>
@@ -61,10 +61,20 @@ export default {
       };
     },
     methods: {
-      go(){
+      //再来一单
+      again(){
+       this.$store.commit("dianpuadd",this.getddxq.dianpu)
+       this.$router.push({name:"dianpu"})
+      },
+      go(){ 
       this.$router.back();             
         },
+    },
+  computed: {
+    getddxq(){
+      return this.$store.state.ddxq;
     }
+  }
 }
 </script>
 <style scoped>

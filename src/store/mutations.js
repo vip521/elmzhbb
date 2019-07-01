@@ -115,4 +115,11 @@ export default {
     czspshujuadd(state){
         state.spshuju={};
     },
+    setddxq(state,v){
+        state.ddxq=v;
+    },
+    setzhmm(state,obj){
+        state.username = obj.a;
+        state.password = obj.b;
+    }
 }
