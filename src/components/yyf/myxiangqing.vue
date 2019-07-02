@@ -122,7 +122,7 @@ export default {
 			this.$router.push({name:"myyouhui"});
 		},
 		dingdan(){
-			this.$router.push({name:"dingdan"});
+			this.$router.push({name:"ddlb"});
 		},
 		login(){
 			 this.$router.push({name:"zhanghuxinxi"});

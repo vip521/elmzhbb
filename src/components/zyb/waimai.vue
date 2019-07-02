@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @scroll="gundong()">
     <div id="head">
       <img @click="abc()" id="head_left" src="../../../static/imgs/fangdajing.png" alt />
       <p id="head_center">{{name}}</p>
@@ -49,6 +49,8 @@
                 text-color="#ff9900"
                 score-template="{value}"
               ></el-rate>
+              <!-- <van-rate size="5px" class="two_pf" v-model="v.rating" readonly />
+              <span>{{v.rating}}</span> -->
               <span class="two_num">月售{{v.recent_order_num}}单</span>
             </div>
             <div class="two_right">
@@ -76,8 +78,16 @@
 <script>
 import { Loading } from "element-ui";
 import { mapState } from "vuex";
+
+import Vue from 'vue'
+import { Button } from 'vant';
+Vue.use(Button);
+import { Rate } from 'vant';
+Vue.use(Rate);
+
 export default {
   name: "waimai",
+  // components:{Button},
   data() {
     return {
       latitude: "",
@@ -96,7 +106,7 @@ export default {
         pagination: {
           el: ".swiper-pagination"
         }
-      },
+      }
     };
   },
   computed: {
@@ -109,12 +119,12 @@ export default {
     this.getSj();
   },
   methods: {
-    my(){
-      this.$router.push({name:"my"});
+    my() {
+      this.$router.push({ name: "my" });
     },
     arr(v) {
       this.$store.commit("getarr", v);
-      this.$router.push({name:"sweet"});
+      this.$router.push({ name: "sweet" });
     },
     getRess() {
       const api =

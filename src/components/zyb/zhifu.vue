@@ -125,7 +125,7 @@ export default {
         money:c,
         shijian:{
           nian:a.getFullYear(),
-          yue:a.getMonth(),
+          yue:a.getMonth()+1,
           ri:a.getDate(),
           shi:a.getHours(),
           fen:a.getMinutes(),
