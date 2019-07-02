@@ -7,7 +7,7 @@
           </div>
           <div class="btn">
             <input @click="btn()" class="btn1" v-model="context"  type="text" placeholder="请输入商家或美食名称">
-            <span v-if="show" @click="dell()" class="el-icon-close sp"></span>
+            <span v-if="show" @click="dell()" class="sp">×</span>
             <p class="btn2" @click="add()">提交</p>
           </div>
       </div>
@@ -22,13 +22,12 @@
               <p class="p1">{{"月售"+ v.recent_order_num+ "单"}}</p>
               <p class="p1">{{v.float_minimum_order_amount+"元起送/"+"距离"+v.distance}}</p>
               </div>
-             
               </li>
-         </ul>
+        </ul>
         <div v-if= "shoo" :key="i" v-for="(v,i) in arrB" class="shoo">
         <span  class="sp_1" >{{v}}</span>
-        <span   @click="del(i)" class="el-icon-close sp  sp_2"></span>
-         </div>
+        <span   @click="del(i)" class="sp_2">×</span>
+        </div>
       <!-- 清空历史记录 -->
         <div class="clean" @click="dellall()">清空历史记录</div>
       </div>
@@ -55,11 +54,18 @@ export default {
     },
     created(){
         this.add2();
+        this.getJW();
     },
-    methods:{
+    computed: {
+      getJW(){ 
+      console.log(this.$store.state.waimai_wz)  
+      return this.$store.state.waimai_wz;
+    }
+  },
+    methods:{     
     //搜索出来的商品的li的点击事件
     shangpin_li(){
-        alert("跳转")
+        this.$router.push({name:"dianpu"})
     },
     go(){
       this.$router.back();             
@@ -74,7 +80,7 @@ export default {
         this.arrB=localStorage [""] = arr;
         // console.log(localStorage.length);
         // console.log(arr)
-        const api ="https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword="+c;
+        const api ="https://elm.cangdu.org/v4/restaurants?geohash="+this.getJW.latitude+","+this.getJW.longitude +"&keyword="+c;
         this.$http({
         url: api,
         method: "get",
@@ -85,7 +91,6 @@ export default {
         this.arrA=res.data;
         })
         }
-        
         },
     //删除
     del(a) {
@@ -151,8 +156,8 @@ export default {
 .btn{
     display: flex;
     margin-top:0.1rem; 
-    height: 0.4rem;
-    line-height: 0.4rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
     background-color: #fff;
 }
 .btn1{
@@ -160,6 +165,7 @@ export default {
     font-size: 0.15rem;
     margin-left:0.1rem; 
     padding: 0.1rem;
+    margin: 0.1rem 0 0.1rem 0.1rem;
     background-color:rgba(128, 128, 128, 0.219);
 }
 .btn2{
@@ -169,7 +175,13 @@ export default {
    text-align: center;
    background-color: blue;
    color: white;
-   margin: 0 0.1rem 0; 
+   height: 0.4rem;
+   line-height: 0.4rem;
+   margin: 0.1rem;
+}
+/* 隐藏 */
+.yincang{
+    padding-top: 0.2rem;
 }
 .S_hist{
     width: 0.7rem;
@@ -202,14 +214,15 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
 }
 .oll li p{
     flex: 90%;
 }
 .sp{
     flex: 10%;
+    height: 0.4rem;
     line-height: 0.4rem;
+    margin-top: 0.1rem;
     color: red;
     background-color:rgba(128, 128, 128, 0.219);
 }
@@ -226,7 +239,7 @@ export default {
 }
 .sp_2{
     float: right;
-    background-color: #fff;
+    color: red;
 }
 .img123{
     width: 0.5rem;
