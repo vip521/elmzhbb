@@ -121,5 +121,10 @@ export default {
     setzhmm(state,obj){
         state.username = obj.a;
         state.password = obj.b;
+    },
+    shifoudeng(state){
+        state.denglu=false;
+        state.username="";
+        state.passworld="";
     }
 }

@@ -58,7 +58,7 @@
       <img src="../../../static/imgs/tishi2.jpg" alt />
       <span>是否退出登陆</span>
       <p @click="zdd()">再等等</p>
-      <p @click="tcdl()">退出登录</p>
+      <p @click="shifoudenglu()">退出登录</p>
     </div>
   </div>
 </template>
@@ -76,12 +76,18 @@ export default {
     this.getdata();
   },
   methods: {
+    shifoudenglu(){
+      this.$store.commit('shifoudeng');
+      this.$router.push({ name: "myxiangqing" });
+    },
     tuichu() {
       this.tishi2 = true;
     },
-    tcdl() {
-      this.$router.push({ name: "myxiangqing" });
-    },
+    // tcdl() {
+    //   this.$router.push({ name: "myxiangqing" });
+    //   this.$store.state.username="";
+    //   this.$store.state.passworld="";
+    // },
     zdd() {
       this.tishi2 = false;
     },

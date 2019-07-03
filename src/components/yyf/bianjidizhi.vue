@@ -5,7 +5,7 @@
 		<span>编辑地址</span>
         <span id="bj">编辑</span>
 		</div>
-        <div id="center"></div>
+        <!-- <div id="center"></div> -->
         <!-- <div > -->
             <ul id="xinzengdizhi">
                 <li @click="dele(i)" v-for="(v,i) in datas" :key="i">{{v.address}}
@@ -114,11 +114,11 @@ export default {
                 font-weight:400;
                 color: white;
             }
-            #center{
+            /* #center{
                 width: 3.75rem;
                 height: 0.1rem;
                 border-bottom: 0.01rem solid  #d9d9d9;
-            }
+            } */
             #xzdz{
                 width: 3.75rem;
                 height: 0.4rem;

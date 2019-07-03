@@ -8,7 +8,7 @@
         <input v-model="gjc" id="top_one" placeholder="请输入小区/写字楼/学校等" type="text">
         <button @click="aaa()" id="top_two">搜索</button>
     </div>
-    <div id="bottom">
+    <div v-if="maps.length==0" id="bottom">
         <p>找不到地址?</p>
         <p>尝试输入小区,写字楼或者学校名</p>
         <p>详细地址(如门牌号等)可稍后输入哦</p>

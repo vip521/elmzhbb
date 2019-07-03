@@ -490,6 +490,7 @@ export default {
 }
 #rimg1{
     position: absolute;
+    width: 0.2rem;
     top: 0.2rem;
     right: 0.1rem;
 

@@ -84,6 +84,7 @@ export default {
 }
 #top {
   margin-top: 0.4rem;
+  margin-bottom: 0.5rem;
   background-color: white;
 }
 .center{

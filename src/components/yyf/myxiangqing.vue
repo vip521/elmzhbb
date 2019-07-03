@@ -12,7 +12,8 @@
 							<img :src="imageUrl" />
 						</div>
 						<div id="dl" @click="login()">
-							<span v-html="this.$store.state.username"></span>
+							<span id="denglu" v-if="bbb==true" v-html="this.$store.state.username"></span>
+							<span v-if="bbb==false" id="denglu">登陆/注册</span>
 							<span><img src="../../../static/imgs/shouji.png"/>暂无绑定手机号</span>
 							<img src="../../../static/imgs/youjiantou.png" />
 						</div>
@@ -77,7 +78,7 @@
 							</span>
 							<img src="../../../static/imgs/iconfontjiantou2.png"/>
 						</div>
-						<div id="elm">
+						<div @click="ada()" id="elm">
 							<img src="../../../static/imgs/eliaomo.png"/>
 							<span>下载饿了么APP</span>
 							<img src="../../../static/imgs/iconfontjiantou2.png"/>
@@ -125,7 +126,11 @@ export default {
 			this.$router.push({name:"ddlb"});
 		},
 		login(){
-			 this.$router.push({name:"zhanghuxinxi"});
+			if(this.bbb==false){
+				this.$router.push({name:"login2"});
+			}else{
+				this.$router.push({name:"zhanghuxinxi"});
+			}
 		},
 		jifen(){
 			this.$router.push({name:"wodejifen"});
@@ -138,9 +143,17 @@ export default {
 		},
 		fuwuzhongxin(){
 			this.$router.push({name:"fuwuzhongxin"});
+		},
+		ada(){
+			this.$router.push({name:"xiazai"});
 		}
 		
-	}
+	},
+	computed: {
+		bbb(){
+			return this.$store.state.denglu;
+		}
+	},
 }
 </script>
 <style scoped>
@@ -199,7 +212,7 @@ export default {
 				top: 0.04rem;
 				border-radius: 50%;
 			}
-			#dl>span {
+			#denglu{
 				width: 2.5rem;
 				font-size: 0.17rem;
 				color: white;
@@ -207,7 +220,6 @@ export default {
 				left: 1rem;
 				top: 0.3rem;
 			}
-			
 			#dl>span+span {
 				font-size: 0.14rem;
 				color: white;

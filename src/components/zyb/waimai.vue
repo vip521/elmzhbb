@@ -250,6 +250,7 @@ export default {
 }
 #bottom {
   background-color: white;
+  margin-bottom: 0.5rem;
 }
 .top_flmk {
   display: flex;
